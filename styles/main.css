@@ -1,0 +1,100 @@
+/* font styles */
+:root {
+  --black: #313131;
+  --white: #fff;
+}
+
+body {
+  color: var(--black);
+  font-family: "Golos Text", serif;
+}
+
+h1,
+h2 {
+  font-family: "Merriweather", serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 110%;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: 3.75rem;
+  margin-bottom: 1.375rem;
+}
+
+p {
+  text-align: center;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+}
+
+.container {
+  max-width: 1220px;
+  padding: 0 1.25rem;
+  margin: auto;
+}
+
+.header {
+  padding: 1.5rem 0 8.25rem;
+  background: url("../images/header-bg.jpg") no-repeat top center;
+}
+
+.button {
+  display: flex;
+  padding: 1rem 1.25rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1 0 0;
+  border-radius: 4.125rem;
+  border: 2px solid var(--black);
+  font: inherit;
+  text-align: center;
+  font-weight: 500;
+}
+
+.button_dark {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.button_light {
+  background: none;
+}
+
+.header__button .button__text {
+  width: 10.3125rem;
+}
+
+.header__content {
+  max-width: 33.875rem;
+  margin-top: 3.75rem;
+}
+
+.header__text {
+  display: block;
+}
+
+.header__text_left {
+  text-align: left;
+}
+
+.header__text_right {
+  text-align: right;
+}
+
+.header__text_center {
+  text-align: center;
+}
+
+.header__desc {
+  margin-bottom: 2.5rem;
+}
+
+.header__buttons {
+  display: flex;
+  gap: 1rem;
+}
