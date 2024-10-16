@@ -62,6 +62,7 @@ p {
   margin: auto;
 }
 
+/*Colors text*/
 .text_red {
   color: var(--red);
   letter-spacing: 0.03rem;
@@ -86,16 +87,11 @@ p {
   color: var(--blue);
 }
 
-.header {
-  padding: 1.5rem 0 8.2rem;
-  background: url("../images/header-bg.jpg") no-repeat top center;
+.text_grey {
+  color: var(--grey);
 }
 
-.header__desc p {
-  font-size: 1.125rem;
-  text-align: center;
-}
-
+/*Buttons*/
 .button {
   display: flex;
   padding: 1rem 1.25rem;
@@ -111,6 +107,10 @@ p {
   cursor: pointer;
 }
 
+.button:disabled {
+  pointer-events: none;
+}
+
 .button_dark {
   background-color: var(--black);
   color: var(--white);
@@ -118,6 +118,30 @@ p {
 
 .button_light {
   background: none;
+}
+
+.button_blue {
+  background-color: var(--white);
+  color: var(--blue);
+  font-size: 1rem;
+  border: 1px solid var(--blue);
+  padding: 0.5rem 0.75rem;
+}
+
+.button_arrow {
+  border: 2px solid var(--black);
+  background-color: var(--black);
+  background-image: url(/./images/arrow.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+}
+
+.button_arrow:disabled {
+  border: 2px solid var(--grey);
+  background-color: var(--grey);
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -131,17 +155,51 @@ p {
     background: var(--black);
     color: var(--white);
   }
+
+  .button_blue:hover {
+    background: var(--blue);
+    color: var(--white);
+  }
+
+  .button_arrow:hover {
+    background-color: var(--yellow);
+    border: 2px solid var(--yellow);
+  }
 }
 
 .button_dark:active {
-  background: var(--yellow);
+  background-color: var(--yellow);
   border: 2px solid var(--yellow);
   color: var(--black);
 }
 
 .button_light:active {
-  background: var(--black);
+  background-color: var(--black);
   color: var(--white);
+}
+
+.button_blue:active {
+  background-color: var(--blue);
+  color: var(--white);
+}
+
+.button_arrow:active {
+  background-color: var(--yellow);
+}
+
+.arrow_right {
+  transform: rotate(180deg);
+}
+
+/*Header*/
+.header {
+  padding: 1.5rem 0 8.2rem;
+  background: url("../images/header-bg.jpg") no-repeat top center;
+}
+
+.header__desc p {
+  font-size: 1.125rem;
+  text-align: center;
 }
 
 .header__button .button__text {
@@ -178,6 +236,7 @@ p {
   gap: 1rem;
 }
 
+/*Running line*/
 .running-line {
   background: var(--red);
   width: 100%;
@@ -223,6 +282,7 @@ p {
   border-radius: 50%;
 }
 
+/*Lecture & Session*/
 .lecture__container {
   display: flex;
   padding: 4.75rem 0 2.25rem;
@@ -301,6 +361,7 @@ p {
   border-right: 2px solid var(--grey);
 }
 
+/*Steps*/
 .steps__heading {
   max-width: 50rem;
   display: flex;
@@ -391,4 +452,9 @@ p {
   position: absolute;
   bottom: -0.25rem;
   right: -2rem;
+}
+
+/*Chess players*/
+.chess-players__h2 {
+  margin: 0 0 3.75rem;
 }
