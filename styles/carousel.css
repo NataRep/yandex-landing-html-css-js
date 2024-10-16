@@ -1,11 +1,14 @@
 .gallery-carousel {
   position: relative;
+}
+
+.gallery-carousel__wrapper {
   width: calc(100% - 4.5rem);
   overflow: hidden;
   padding: 0 2.25rem;
 }
 
-.gallery-carousel__wrapper {
+.gallery-carousel__items-list {
   display: flex;
   gap: 6rem;
   width: max-content;
