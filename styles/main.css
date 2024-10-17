@@ -23,6 +23,10 @@ body {
   font-family: "Golos Text", serif;
 }
 
+img {
+  max-width: 100%;
+}
+
 h1,
 h2,
 .running-line__text {
@@ -93,11 +97,9 @@ p {
 /*Buttons*/
 .button {
   display: flex;
-  padding: 1rem 1.25rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex: 1 0 0;
   border-radius: 4.125rem;
   border: 2px solid var(--black);
   font: inherit;
@@ -107,8 +109,14 @@ p {
 }
 
 .button a {
+  display: block;
   color: inherit;
   text-decoration: none;
+  padding: 1rem 3.25rem;
+}
+
+.button__text {
+  max-width: 140px;
 }
 
 .button:disabled {
@@ -199,6 +207,7 @@ p {
 .header {
   padding: 1.5rem 0 8.2rem;
   background: url("../images/header-bg.jpg") no-repeat top center;
+  background-size: cover;
 }
 
 .header__desc p {
@@ -206,13 +215,12 @@ p {
   text-align: center;
 }
 
-.header__button .button__text {
-  width: 10.3125rem;
-}
-
 .header__content {
   max-width: 33.875rem;
   margin-top: 3.75rem;
+}
+.header h1 {
+  width: fit-content;
 }
 
 .header__text {
@@ -293,7 +301,7 @@ p {
 
 .lecture__container {
   display: flex;
-  padding: 4.75rem 0 2.25rem;
+  padding: 4.75rem 2rem 2.25rem;
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
@@ -311,7 +319,7 @@ p {
 
 .session__container {
   max-width: 1274px;
-  padding: 0rem;
+  padding: 0rem 2rem;
   display: flex;
   gap: 1rem;
 }
@@ -336,10 +344,11 @@ p {
 }
 
 .table__row {
-  display: grid;
-  grid-template-columns: 1fr 1.3fr;
+  display: flex;
+  flex-wrap: wrap;
   padding: 0;
   border-bottom: 2px solid var(--grey);
+  gap: 0 1rem;
 }
 
 .table__row:last-child {
@@ -348,7 +357,7 @@ p {
 
 .table__cell {
   padding-bottom: 1rem;
-  padding-top: 1rem;
+  padding-top: 0.9375rem;
 }
 
 .table__row:first-child .table__cell {
@@ -361,16 +370,17 @@ p {
 
 .table__value {
   font-weight: 600;
-  padding-left: 1rem;
 }
 
 .table__property {
   border-right: 2px solid var(--grey);
+  width: 19rem;
 }
 
 /*Steps*/
 .steps {
   margin-bottom: 12.5rem;
+  overflow: hidden;
 }
 
 .steps__heading {
