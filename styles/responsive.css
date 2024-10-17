@@ -117,7 +117,8 @@
 
   .header {
     padding: 1.125rem 0 8rem;
-    background: url("../images/header-bg-mobil.png") no-repeat calc(100% + 5rem) -2rem,
+    background: url("../images/header-bg-mobil.png") no-repeat calc(100% + 5rem)
+        calc(100% + 1rem),
       url("../images/header-bg-texture.jpg") top center;
 
     position: relative;
@@ -214,7 +215,8 @@
 @media (max-width: 375px) {
   .header {
     padding: 1.125rem 0 8rem;
-    background: url("../images/header-bg-mobil.png") no-repeat -25rem 0rem,
+    background: url("../images/header-bg-mobil.png") no-repeat -25rem calc(100% +
+            1rem),
       url("../images/header-bg-texture.jpg") top center;
   }
 }

@@ -206,7 +206,7 @@ p {
 
 /*Header*/
 .header {
-  background: url("../images/header-bg-texture.jpg") no-repeat top center;
+  background: url("../images/header-bg-texture.jpg") repeat top center;
   background-size: cover;
   position: relative;
   overflow: hidden;
@@ -520,7 +520,7 @@ p {
 
 /*Footer*/
 .footer {
-  background: url("../images/paper-texture-2.jpg") repeat top center;
+  background: url("../images/header-bg-texture.jpg") repeat top center;
   padding: 1.5rem 0 3.5rem;
 }
 
