@@ -141,6 +141,6 @@
 @media (max-width: 768px) {
   .gallery-carousel__wrapper,
   .gallery-carousel:not(.gallery-carousel_mobil) .gallery-carousel__wrapper {
-    width: 320px;
+    width: 340px;
   }
 }
