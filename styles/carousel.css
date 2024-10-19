@@ -27,6 +27,10 @@
 
 .gallery-carousel__img {
   margin-bottom: 1.5rem;
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 .gallery-carousel__name {
@@ -90,7 +94,8 @@
     gap: 1.75rem;
   }
 
-  .gallery-carousel__wrapper {
+  .gallery-carousel__wrapper,
+  .gallery-carousel:not(.gallery-carousel_mobil) .gallery-carousel__wrapper {
     width: 100%;
     overflow: hidden;
     padding: 0;
@@ -114,10 +119,20 @@
     width: max-content;
   }
 
+  .chess-players__gallery .gallery-carousel__items-list {
+    margin-bottom: 1rem;
+  }
+
   .gallery-carousel__item {
     display: flex;
     flex-direction: column;
     align-items: center;
     max-width: 21rem;
+  }
+
+  .gallery-carousel__img {
+    width: 15.25rem;
+    height: 15.25rem;
+    margin-bottom: 2rem;
   }
 }
