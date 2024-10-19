@@ -17,15 +17,19 @@ function handlerClickOnCarouselButtons(event) {
   const carouselItemsList = carousel.querySelector(
     ".gallery-carousel__items-list"
   );
+  const gap = parseInt(getComputedStyle(carouselItemsList).gap);
+  console.log(gap);
   const direction = button.classList.contains("next-button") ? "left" : "right";
 
   const wrapperWith = carousel.querySelector(
     ".gallery-carousel__wrapper"
   ).offsetWidth;
+  console.log(wrapperWith);
+
   if (direction == "left") {
-    position -= wrapperWith;
+    position -= wrapperWith + gap;
   } else {
-    position += wrapperWith;
+    position += wrapperWith + gap;
   }
 
   rotateCarousel(carouselItemsList, position);
