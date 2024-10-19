@@ -141,7 +141,7 @@ p {
 }
 
 .button_small a {
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem;
 }
 
 .button_arrow {
@@ -204,7 +204,7 @@ p {
   border: 2px solid var(--yellow);
 }
 
-.arrow_right {
+.prev-button {
   transform: rotate(180deg);
 }
 
@@ -446,7 +446,7 @@ p {
 .steps__container {
   display: flex;
   flex-direction: column;
-  gap: 3.5rem;
+  gap: 3.25rem;
   position: relative;
 }
 

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Шахматный клуб "Клуб четырех коней"</title>
+    <title>Международный васюкинский турнир по шахматам</title>
     <link rel="stylesheet" href="styles/normalize.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -191,7 +191,9 @@
             autoplay="false"
           >
             <div class="gallery-carousel__toolbar">
-              <button class="button button_arrow arrow_left" disabled></button>
+              <button
+                class="button button_arrow gallery-carousel__button next-button"
+              ></button>
               <div class="gallery-carousel__indicators">
                 <div
                   class="gallery-carousel__indicator gallery-carousel__indicator_current"
@@ -209,7 +211,9 @@
                   class="gallery-carousel__indicator gallery-carousel__indicator"
                 ></div>
               </div>
-              <button class="button button_arrow arrow_right"></button>
+              <button
+                class="button button_arrow gallery-carousel__button prev-button"
+              ></button>
             </div>
             <div class="gallery-carousel__wrapper">
               <div class="steps__grid gallery-carousel__items-list">
@@ -283,7 +287,9 @@
           </div>
           <div class="chess-players__gallery gallery-carousel" autoplay="true">
             <div class="gallery-carousel__toolbar">
-              <button class="button button_arrow arrow_left" disabled></button>
+              <button
+                class="button button_arrow gallery-carousel__button gallery-carousel__button next-button"
+              ></button>
               <div class="gallery-carousel__counter">
                 <span class="gallery-carousel__current-slide-number">0</span
                 ><span class="text_grey">/</span
@@ -291,7 +297,9 @@
                   >0</span
                 >
               </div>
-              <button class="button button_arrow arrow_right"></button>
+              <button
+                class="button button_arrow gallery-carousel__button prev-button"
+              ></button>
             </div>
             <div class="gallery-carousel__wrapper">
               <div class="gallery-carousel__items-list">
@@ -406,5 +414,6 @@
         </p>
       </div>
     </footer>
+    <script src="js/carousel.js"></script>
   </body>
 </html>
