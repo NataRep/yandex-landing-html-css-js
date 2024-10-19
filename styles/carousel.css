@@ -96,7 +96,8 @@
 
   .gallery-carousel__wrapper,
   .gallery-carousel:not(.gallery-carousel_mobil) .gallery-carousel__wrapper {
-    width: 100%;
+    width: 740px;
+    margin: auto;
     overflow: hidden;
     padding: 0;
   }
@@ -134,5 +135,12 @@
     width: 15.25rem;
     height: 15.25rem;
     margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-carousel__wrapper,
+  .gallery-carousel:not(.gallery-carousel_mobil) .gallery-carousel__wrapper {
+    width: 320px;
   }
 }

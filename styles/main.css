@@ -511,6 +511,7 @@ p {
   position: absolute;
   bottom: -0.25rem;
   right: -2rem;
+  z-index: 3;
 }
 
 /*Chess players*/
