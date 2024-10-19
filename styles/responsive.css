@@ -69,6 +69,11 @@
     font-size: 2.25rem;
   }
 
+  .button_arrow {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
   .header__content {
     max-width: 100%;
   }
@@ -79,8 +84,51 @@
     font-size: 1.75rem;
   }
 
+  .steps__gallery {
+    padding-top: 0rem;
+    margin-top: -3.75rem;
+  }
+
+  .steps__gallery .gallery-carousel__item {
+    background-image: url("../images/paper-texture-2.jpg");
+    background-position: left top;
+    width: 18.5rem;
+    padding: 4rem 1.25rem 2rem;
+  }
+
   .steps__heading {
     max-width: 40rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .step {
+    background-image: none;
+    padding: 0;
+    margin-bottom: 1.75rem;
+  }
+
+  .step:last-child {
+    margin-bottom: 0rem;
+  }
+
+  .steps__container {
+    gap: 0;
+  }
+
+  .steps__plane {
+    position: static;
+    display: block;
+    width: 100%;
+    padding-left: 0.75rem;
+    transform: rotate(-4deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+
+  .step__text {
+    font-size: 1.125rem;
   }
 }
 
@@ -113,6 +161,10 @@
   .container {
     max-width: 100%;
     padding: 0 1.25rem;
+  }
+
+  .container.session__container {
+    padding: 0;
   }
 
   .header {
@@ -190,6 +242,14 @@
 
   .table__row:last-child {
     padding-bottom: 0;
+  }
+
+  .session__info {
+    padding: 0 1.25rem;
+  }
+
+  .session__info {
+    margin-top: -0.25rem;
   }
 
   .session p {

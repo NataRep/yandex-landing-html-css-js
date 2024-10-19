@@ -138,13 +138,16 @@ p {
   color: var(--blue);
   font-size: 1rem;
   border: 1px solid var(--blue);
+}
+
+.button_small a {
   padding: 0.5rem 0.75rem;
 }
 
 .button_arrow {
   border: 2px solid var(--black);
   background-color: var(--black);
-  background-image: url(/./images/arrow.svg);
+  background-image: url(../images/arrow.svg);
   background-repeat: no-repeat;
   background-position: center center;
   width: 2.75rem;
@@ -198,6 +201,7 @@ p {
 
 .button_arrow:active {
   background-color: var(--yellow);
+  border: 2px solid var(--yellow);
 }
 
 .arrow_right {
