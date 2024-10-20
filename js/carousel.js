@@ -12,48 +12,68 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function handlerClickOnCarouselButtons(event) {
+  // DOM Elements
   const button = event.target;
   const carousel = button.closest(".gallery-carousel");
+  const buttonNext = carousel.querySelector(".next-button");
+  const buttonPrev = carousel.querySelector(".prev-button");
   const carouselItemsList = carousel.querySelector(
     ".gallery-carousel__items-list"
   );
-  const gap = parseInt(getComputedStyle(carouselItemsList).gap);
-  console.log(gap);
-  const direction = button.classList.contains("next-button") ? "left" : "right";
 
-  const wrapperWith = carousel.querySelector(
+  const wrapperWidth = carousel.querySelector(
     ".gallery-carousel__wrapper"
   ).offsetWidth;
-  console.log(wrapperWith);
+  const itemsListWidth = carouselItemsList.offsetWidth;
+  const gap = parseInt(getComputedStyle(carouselItemsList).gap);
+
+  const direction = button.classList.contains("next-button") ? "left" : "right";
 
   if (direction == "left") {
-    position -= wrapperWith + gap;
+    position -= wrapperWidth + gap;
   } else {
-    position += wrapperWith + gap;
+    position += wrapperWidth + gap;
   }
 
+  toggleNavigationButtons(
+    position,
+    itemsListWidth,
+    wrapperWidth,
+    buttonNext,
+    buttonPrev
+  );
+
   rotateCarousel(carouselItemsList, position);
+
+  toggleNavigationButtons(
+    position,
+    itemsListWidth,
+    wrapperWidth,
+    buttonNext,
+    buttonPrev
+  );
 }
 
 function rotateCarousel(carousel, position) {
   carousel.style.transform = `translateX(${position}px)`;
+}
 
-  /* const wrapper = carousel.querySelector(".gallery-carousel__wrapper");
-  const itemWith = carousel.querySelector(
-    ".gallery-carousel__item"
-  ).offsetWidth;
-  const wrapperWith = wrapper.offsetWidth;
+function toggleNavigationButtons(
+  position,
+  itemsListWidth,
+  wrapperWidth,
+  buttonNext,
+  buttonPrev
+) {
+  if (itemsListWidth + (position - wrapperWidth) <= 0) {
+    buttonNext.disabled = true;
+  } else {
+    buttonNext.disabled = false;
+  }
 
-  console.log(wrapperWith);
-
-  const carouselItemsList = carousel.querySelector(
-    ".gallery-carousel__items-list"
-  );
-  const position =
-    parseInt(getComputedStyle(carouselItemsList).transform) != NaN
-      ? parseInt(getComputedStyle(carouselItemsList).transform)
-      : 0;
-
-  console.log(getComputedStyle(carouselItemsList).transform);
-  */
+  if (position === 0) {
+    buttonPrev.disabled = true;
+  } else {
+    buttonPrev.disabled = false;
+  }
 }
