@@ -4,13 +4,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Установка анимации для каждой карусели
   carousels.forEach((carousel) => {
-    let index = 1;
+    let index = 0;
     let position;
 
     // Тип карусели
     const isAutoplay = carousel.dataset.autoplay === "true";
     const isLoop = carousel.dataset.loop === "true";
-    console.log(isLoop);
 
     // Основные DOM элементы карусели
     const buttonNext = carousel.querySelector(".next-button");
@@ -18,6 +17,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const carouselItemsList = carousel.querySelector(
       ".gallery-carousel__items-list"
     );
+    const indicatorsWrapper = carousel.querySelector(
+      ".gallery-carousel__indicators"
+    );
+    const counterWrapper = carousel.querySelector(
+      ".gallery-carousel__indicators"
+    );
+    const countItems = carousel.querySelectorAll(
+      ".gallery-carousel__item"
+    ).length;
 
     // Размеры элементов
     const wrapperWidth = carousel.querySelector(
@@ -26,23 +34,36 @@ document.addEventListener("DOMContentLoaded", function () {
     const itemsListWidth = carouselItemsList.offsetWidth;
     const gap = parseInt(getComputedStyle(carouselItemsList).gap) || 0;
 
+    //Настройка индикаторов
+    let indicators;
+    if (indicatorsWrapper) {
+      indicators = createIndicators(counterWrapper, countItems);
+      setIndicator(indicators, index);
+    }
+
     // Функция для обработки кликов по кнопкам
     function handleClick(direction) {
-      // Вычисляем новое положение карусели
-      position = -(wrapperWidth + gap) * index;
-      position = Math.max(
-        Math.min(position, 0),
-        -(itemsListWidth - wrapperWidth)
-      );
-
-      // Прокрутка карусели
-      rotateCarousel(carouselItemsList, position);
+      //Убираю выделение индикатора
+      if (indicatorsWrapper) {
+        setIndicator(indicators, index);
+      }
 
       // Изменение индекса
       if (direction === "next") {
         index++;
       } else if (direction === "prev") {
         index--;
+      }
+
+      // Вычисляем новое положение карусели
+      position = -(wrapperWidth + gap) * index + 1;
+
+      // Прокрутка карусели
+      rotateCarousel(carouselItemsList, position);
+
+      //Обновляю индикатор
+      if (indicatorsWrapper) {
+        setIndicator(indicators, index);
       }
 
       if (!isLoop) {
@@ -77,8 +98,9 @@ function setNavigationButtons(
   buttonNext,
   buttonPrev
 ) {
+  console.log(position);
   // Начало карусели
-  if (position === 0) {
+  if (position >= 0) {
     buttonPrev.disabled = true;
   } else {
     buttonPrev.disabled = false;
@@ -90,4 +112,19 @@ function setNavigationButtons(
   } else {
     buttonNext.disabled = false;
   }
+}
+
+function createIndicators(wrapper, count) {
+  const indicators = [];
+  for (let i = 0; i < count; i++) {
+    const indicator = document.createElement("div");
+    indicator.classList.add("gallery-carousel__indicator");
+    wrapper.append(indicator);
+    indicators.push(indicator);
+  }
+  return indicators;
+}
+
+function setIndicator(indicators, index) {
+  indicators[index].classList.toggle("gallery-carousel__indicator_current");
 }
