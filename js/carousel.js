@@ -4,13 +4,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Установка анимации для каждой карусели
   carousels.forEach((carousel) => {
-    let position = 0;
+    let index = 1;
+    let position;
 
     // Тип карусели
     const isAutoplay = carousel.dataset.autoplay === "true";
     const isLoop = carousel.dataset.loop === "true";
+    console.log(isLoop);
 
-    // Основные DOM елементы карусели
+    // Основные DOM элементы карусели
     const buttonNext = carousel.querySelector(".next-button");
     const buttonPrev = carousel.querySelector(".prev-button");
     const carouselItemsList = carousel.querySelector(
@@ -26,12 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Функция для обработки кликов по кнопкам
     function handleClick(direction) {
-      // Изменение позиции
-      if (direction === "next") {
-        position -= wrapperWidth + gap;
-      } else if (direction === "prev") {
-        position += wrapperWidth + gap;
-      }
+      // Вычисляем новое положение карусели
+      position = -(wrapperWidth + gap) * index;
       position = Math.max(
         Math.min(position, 0),
         -(itemsListWidth - wrapperWidth)
@@ -40,14 +38,23 @@ document.addEventListener("DOMContentLoaded", function () {
       // Прокрутка карусели
       rotateCarousel(carouselItemsList, position);
 
-      // Дисейбл кнопок в случае крайних положений
-      setNavigationButtons(
-        position,
-        itemsListWidth,
-        wrapperWidth,
-        buttonNext,
-        buttonPrev
-      );
+      // Изменение индекса
+      if (direction === "next") {
+        index++;
+      } else if (direction === "prev") {
+        index--;
+      }
+
+      if (!isLoop) {
+        // Дисейбл кнопок в случае крайних положений
+        setNavigationButtons(
+          position,
+          itemsListWidth,
+          wrapperWidth,
+          buttonNext,
+          buttonPrev
+        );
+      }
     }
 
     // Обработчики событий по кликам на кнопки
@@ -55,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
     buttonPrev.addEventListener("click", () => handleClick("prev"));
 
     // Начальные состояния кнопок
-    buttonPrev.disabled = true;
+    if (!isLoop) buttonPrev.disabled = true;
   });
 });
 
