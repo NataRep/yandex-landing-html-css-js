@@ -81,13 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (!isLoop) {
         // Дисейбл кнопок в случае крайних положений
-        setNavigationButtons(
-          position,
-          itemsListWidth,
-          wrapperWidth,
-          buttonNext,
-          buttonPrev
-        );
+        setNavigationButtons(index, countItems, buttonNext, buttonPrev);
       }
     }
 
@@ -104,7 +98,7 @@ function rotateCarousel(carousel, position) {
   carousel.style.transform = `translateX(${position}px)`;
 }
 
-function setNavigationButtons(
+/*function setNavigationButtons(
   position,
   itemsListWidth,
   wrapperWidth,
@@ -121,6 +115,22 @@ function setNavigationButtons(
 
   // Конец карусели
   if (position <= -(itemsListWidth - wrapperWidth)) {
+    buttonNext.disabled = true;
+  } else {
+    buttonNext.disabled = false;
+  }
+}*/
+
+function setNavigationButtons(index, countItems, buttonNext, buttonPrev) {
+  // Начало карусели
+  if (index === 0) {
+    buttonPrev.disabled = true;
+  } else {
+    buttonPrev.disabled = false;
+  }
+
+  // Конец карусели
+  if (index + 1 === countItems) {
     buttonNext.disabled = true;
   } else {
     buttonNext.disabled = false;
