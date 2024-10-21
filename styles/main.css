@@ -517,6 +517,7 @@ p {
 /*Chess players*/
 .chess-players {
   margin-bottom: 8.75rem;
+  overflow: hidden;
 }
 .chess-players__h2 {
   margin-top: 0;

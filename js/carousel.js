@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   carousels.forEach((carousel) => {
     let index = 0;
     let position;
+    let direction = "next";
 
     // Тип карусели
     const isAutoplay = carousel.dataset.autoplay === "true";
@@ -27,10 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const counterAll = carousel.querySelector(
       ".gallery-carousel__all-sliders-number"
     );
-    const countItems = carousel.querySelectorAll(
-      ".gallery-carousel__item"
-    ).length;
-
     // Размеры элементов
     const wrapperWidth = carousel.querySelector(
       ".gallery-carousel__wrapper"
@@ -51,8 +48,18 @@ document.addEventListener("DOMContentLoaded", function () {
       setCounter(counterCurrent, index + 1);
     }
 
+    if (isAutoplay) {
+      autoplay();
+    }
+
+    function autoplay() {
+      setInterval(() => handleClick(direction), 4000);
+    }
+
     // Функция для обработки кликов по кнопкам
     function handleClick(direction) {
+      console.log("!");
+
       //Убираю выделение индикатора
       if (indicatorsWrapper) {
         setIndicator(indicators, index);
