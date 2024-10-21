@@ -36,17 +36,18 @@ document.addEventListener("DOMContentLoaded", function () {
       ".gallery-carousel__wrapper"
     ).offsetWidth;
     const itemsListWidth = carouselItemsList.offsetWidth;
+    const countSliders = Math.round(itemsListWidth / wrapperWidth);
     const gap = parseInt(getComputedStyle(carouselItemsList).gap) || 0;
 
     //Настройка индикаторов
     let indicators;
     if (indicatorsWrapper) {
-      indicators = createIndicators(indicatorsWrapper, countItems);
+      indicators = createIndicators(indicatorsWrapper, countSliders);
       setIndicator(indicators, index);
     }
 
     if (counterWrapper) {
-      counterAll.innerHTML = countItems;
+      counterAll.innerHTML = countSliders;
       setCounter(counterCurrent, index + 1);
     }
 
@@ -60,8 +61,18 @@ document.addEventListener("DOMContentLoaded", function () {
       // Изменение индекса
       if (direction === "next") {
         index++;
+        if (isLoop) {
+          if (index === countSliders) {
+            index = 0;
+          }
+        }
       } else if (direction === "prev") {
         index--;
+        if (isLoop) {
+          if (index < 0) {
+            index = countSliders - 1;
+          }
+        }
       }
 
       // Вычисляем новое положение карусели
@@ -75,13 +86,13 @@ document.addEventListener("DOMContentLoaded", function () {
         setIndicator(indicators, index);
       }
       if (counterWrapper) {
-        counterAll.innerHTML = countItems;
+        counterAll.innerHTML = countSliders;
         setCounter(counterCurrent, index + 1);
       }
 
       if (!isLoop) {
         // Дисейбл кнопок в случае крайних положений
-        setNavigationButtons(index, countItems, buttonNext, buttonPrev);
+        setNavigationButtons(index, countSliders, buttonNext, buttonPrev);
       }
     }
 
@@ -98,30 +109,7 @@ function rotateCarousel(carousel, position) {
   carousel.style.transform = `translateX(${position}px)`;
 }
 
-/*function setNavigationButtons(
-  position,
-  itemsListWidth,
-  wrapperWidth,
-  buttonNext,
-  buttonPrev
-) {
-  console.log(position);
-  // Начало карусели
-  if (position >= 0) {
-    buttonPrev.disabled = true;
-  } else {
-    buttonPrev.disabled = false;
-  }
-
-  // Конец карусели
-  if (position <= -(itemsListWidth - wrapperWidth)) {
-    buttonNext.disabled = true;
-  } else {
-    buttonNext.disabled = false;
-  }
-}*/
-
-function setNavigationButtons(index, countItems, buttonNext, buttonPrev) {
+function setNavigationButtons(index, countSliders, buttonNext, buttonPrev) {
   // Начало карусели
   if (index === 0) {
     buttonPrev.disabled = true;
@@ -130,7 +118,7 @@ function setNavigationButtons(index, countItems, buttonNext, buttonPrev) {
   }
 
   // Конец карусели
-  if (index + 1 === countItems) {
+  if (index + 1 === countSliders) {
     buttonNext.disabled = true;
   } else {
     buttonNext.disabled = false;
