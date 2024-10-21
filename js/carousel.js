@@ -20,8 +20,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const indicatorsWrapper = carousel.querySelector(
       ".gallery-carousel__indicators"
     );
-    const counterWrapper = carousel.querySelector(
-      ".gallery-carousel__indicators"
+    const counterWrapper = carousel.querySelector(".gallery-carousel__counter");
+    const counterCurrent = carousel.querySelector(
+      ".gallery-carousel__current-slide-number"
+    );
+    const counterAll = carousel.querySelector(
+      ".gallery-carousel__all-sliders-number"
     );
     const countItems = carousel.querySelectorAll(
       ".gallery-carousel__item"
@@ -37,8 +41,13 @@ document.addEventListener("DOMContentLoaded", function () {
     //Настройка индикаторов
     let indicators;
     if (indicatorsWrapper) {
-      indicators = createIndicators(counterWrapper, countItems);
+      indicators = createIndicators(indicatorsWrapper, countItems);
       setIndicator(indicators, index);
+    }
+
+    if (counterWrapper) {
+      counterAll.innerHTML = countItems;
+      setCounter(counterCurrent, index + 1);
     }
 
     // Функция для обработки кликов по кнопкам
@@ -64,6 +73,10 @@ document.addEventListener("DOMContentLoaded", function () {
       //Обновляю индикатор
       if (indicatorsWrapper) {
         setIndicator(indicators, index);
+      }
+      if (counterWrapper) {
+        counterAll.innerHTML = countItems;
+        setCounter(counterCurrent, index + 1);
       }
 
       if (!isLoop) {
@@ -127,4 +140,8 @@ function createIndicators(wrapper, count) {
 
 function setIndicator(indicators, index) {
   indicators[index].classList.toggle("gallery-carousel__indicator_current");
+}
+
+function setCounter(counterCurrent, index) {
+  counterCurrent.innerHTML = index;
 }
