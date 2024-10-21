@@ -33,8 +33,15 @@ document.addEventListener("DOMContentLoaded", function () {
       ".gallery-carousel__wrapper"
     ).offsetWidth;
     const itemsListWidth = carouselItemsList.offsetWidth;
+    const itemWidth = carouselItemsList.querySelector(
+      ".gallery-carousel__item"
+    ).offsetWidth;
+    const countItems = carouselItemsList.querySelectorAll(
+      ".gallery-carousel__item"
+    ).length;
     const countSliders = Math.round(itemsListWidth / wrapperWidth);
     const gap = parseInt(getComputedStyle(carouselItemsList).gap) || 0;
+    const countItemsOnSlid = Math.round(wrapperWidth / (itemWidth + gap));
 
     //Настройка индикаторов
     let indicators;
@@ -44,8 +51,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (counterWrapper) {
-      counterAll.innerHTML = countSliders;
-      setCounter(counterCurrent, index + 1);
+      counterAll.innerHTML = countItems;
+      setCounter(counterCurrent, index + 1, countItemsOnSlid);
     }
 
     if (isAutoplay) {
@@ -58,8 +65,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Функция для обработки кликов по кнопкам
     function handleClick(direction) {
-      console.log("!");
-
       //Убираю выделение индикатора
       if (indicatorsWrapper) {
         setIndicator(indicators, index);
@@ -92,9 +97,9 @@ document.addEventListener("DOMContentLoaded", function () {
       if (indicatorsWrapper) {
         setIndicator(indicators, index);
       }
+
       if (counterWrapper) {
-        counterAll.innerHTML = countSliders;
-        setCounter(counterCurrent, index + 1);
+        setCounter(counterCurrent, index + 1, countItemsOnSlid);
       }
 
       if (!isLoop) {
@@ -147,6 +152,6 @@ function setIndicator(indicators, index) {
   indicators[index].classList.toggle("gallery-carousel__indicator_current");
 }
 
-function setCounter(counterCurrent, index) {
-  counterCurrent.innerHTML = index;
+function setCounter(counterCurrent, index, countOnPage) {
+  counterCurrent.innerHTML = index * countOnPage;
 }
