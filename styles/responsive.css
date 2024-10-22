@@ -180,12 +180,12 @@
     font-size: 1.125rem;
   }
 
-  .button a {
+  .button {
     padding: 0.75rem 1rem;
   }
 
-  .button_small a {
-    padding: 0.375rem;
+  .button_small {
+    padding: 0.375rem 0.75rem;
   }
 
   .button__text {
